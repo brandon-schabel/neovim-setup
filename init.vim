@@ -1,21 +1,6 @@
 " == VIM PLUG ================================
 call plug#begin('~/.vim/plugged')
-"------------------------ COC ------------------------
-" coc for tslinting, auto complete and prettier
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" coc extensions
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
-"------------------------ VIM TSX ------------------------
-" by default, if you open tsx file, neovim does not show syntax colors
-" vim-tsx will do all the coloring for jsx in the .tsx file
-Plug 'ianks/vim-tsx'
-"------------------------ VIM TSX ------------------------
-" by default, if you open tsx file, neovim does not show syntax colors
-" typescript-vim will do all the coloring for typescript keywords
-Plug 'leafgarland/typescript-vim'
-"------------------------ THEME ------------------------
-" most importantly you need a good color scheme to write good code :D
-Plug 'dikiaap/minimalist'
+
 call plug#end()
 " == VIMPLUG END ================================
 " == AUTOCMD ================================ 
@@ -28,34 +13,75 @@ au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 
 " === Custom plugins
 
-" Ranger
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
-
-" Sneak https://github.com/justinmk/vim-sneak
-Plug 'justinmk/vim-sneak'
-
-" QuickScope https://github.com/unblevable/quick-scope#installation
-Plug 'unblevable/quick-scope' 
-
-" Rainbow https://github.com/luochen1990/rainbow
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
-
-" Nerdtree https://github.com/preservim/nerdtree
 
 call plug#begin()
+  "------------------------ COC ------------------------
+  " coc for tslinting, auto complete and prettier
+  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  " coc extensions
+  let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+
+  " by default, if you open tsx file, neovim does not show syntax colors
+  " vim-tsx will do all the coloring for jsx in the .tsx file
+  Plug 'ianks/vim-tsx'
+
+  " by default, if you open tsx file, neovim does not show syntax colors
+  " typescript-vim will do all the coloring for typescript keywords
+  Plug 'leafgarland/typescript-vim'
+
+  " Styled components
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+  " Nerdtree https://github.com/preservim/nerdtree
   Plug 'preservim/nerdtree'
+
+  " Ranger
+  Plug 'francoiscabrol/ranger.vim'
+  Plug 'rbgrouleff/bclose.vim'
+
+  " Sneak https://github.com/justinmk/vim-sneak quick file nave
+  Plug 'justinmk/vim-sneak'
+
+  " QuickScope https://github.com/unblevable/quick-scope easy same line navigation
+  Plug 'unblevable/quick-scope' 
+
+  " Rainbow https://github.com/luochen1990/rainbow rainbow brackets
+  Plug 'luochen1990/rainbow'
+
+  Plug 'terryma/vim-multiple-cursors'
+
+  " FZF https://github.com/junegunn/fzf.vim a lot of random stuff
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+
+  " VIM Fujitive https://github.com/tpope/vim-fugitive git functionality
+  Plug 'tpope/vim-fugitive'
+
+  " Git Gutter https://github.com/airblade/vim-gitgutter
+  Plug 'airblade/vim-gitgutter'
+
+  " Git Ctrl P https://github.com/ctrlpvim/ctrlp.vim fuzzy file finder
+  Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
+
+" set rainbow plugin to active
+let g:rainbow_active = 1
+
+
+
+" Nerdtree configs
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-f> :CR<NERDTreeFind>
 
 
-Plug 'mileszs/ack.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Notes
+" note: ctrl + ww switches between nerdtree and the file
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
 
 
 " ===== One Dark Theme config ======
@@ -99,3 +125,8 @@ augroup END
 
 let g:qs_hi_priority = 100
 
+" ==== Set personal VIM settings
+" enable line numbers
+set number
+set tabstop=2
+set autoindent
