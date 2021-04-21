@@ -19,7 +19,7 @@ call plug#begin()
   " coc for tslinting, auto complete and prettier
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   " coc extensions
-  let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+  let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-jest']
 
   " by default, if you open tsx file, neovim does not show syntax colors
   " vim-tsx will do all the coloring for jsx in the .tsx file
@@ -82,6 +82,18 @@ nnoremap <C-f> :CR<NERDTreeFind>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
+" coc-jest setup
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
 
 
 " ===== One Dark Theme config ======

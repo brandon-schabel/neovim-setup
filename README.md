@@ -5,6 +5,7 @@ Linux: `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.s
 Mac: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash`
 
 Add to zshrc file if not already done:
+
 `
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -44,4 +45,17 @@ Linux: `sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/instal
 
 // needed for fzf “Ag” function
 `sudo apt-get install silversearcher-ag`
+
+
+
+
+Notes:
+
+QuickScope
+f followed by a character will take you to the first character on that line semicolon will jump to the next one, t will put the cursor in front, comma will go backward
+
+Uppercase "F" will go backward, 
+
+:version // shows configuration options
+
 
