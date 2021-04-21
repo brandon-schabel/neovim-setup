@@ -19,7 +19,7 @@ call plug#begin()
   " coc for tslinting, auto complete and prettier
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   " coc extensions
-  let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-jest']
+  let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-jest', 'coc-tailwindcss']
 
   " by default, if you open tsx file, neovim does not show syntax colors
   " vim-tsx will do all the coloring for jsx in the .tsx file
@@ -142,3 +142,14 @@ let g:qs_hi_priority = 100
 set number
 set tabstop=2
 set autoindent
+set expandtab
+
+" disable arrow keys
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
